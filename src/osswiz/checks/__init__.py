@@ -1,11 +1,11 @@
-from typing import cast
+from typing import TypeAlias, cast
 
 import repo_review
 import repo_review.checks
 
 from osswiz.checks.licenses import LicenseCheck
 
-type CheckResult = bool | str | None
+CheckResult: TypeAlias = bool | str | None
 
 
 def repo_review_checks() -> dict[str, repo_review.checks.Check]:
