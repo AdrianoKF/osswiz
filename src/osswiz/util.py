@@ -1,3 +1,4 @@
+import re
 from collections.abc import Iterable
 from typing import TypeVar
 
@@ -5,53 +6,22 @@ from typing import TypeVar
 def classify_license(license_text: str) -> str | None:
     """Attempt to classify a license based on its text. Returns the SPDX identifier if recognized, otherwise None."""
 
-    # FIXME: Very naive heuristic
-    def _is_mit_license(license_text: str) -> bool:
-        return "MIT License" in license_text
-
-    def _is_apache2_license(license_text: str) -> bool:
-        return "Apache License" in license_text and "Version 2" in license_text
-
-    def _is_gplv3_license(license_text: str) -> bool:
-        return (
-            "GNU GENERAL PUBLIC LICENSE" in license_text and "Version 3" in license_text
-        )
-
-    def _is_lgplv3_license(license_text: str) -> bool:
-        return (
-            "GNU LESSER GENERAL PUBLIC LICENSE" in license_text
-            and "Version 3" in license_text
-        )
-
-    def _is_agplv3_license(license_text: str) -> bool:
-        return (
-            "GNU AFFERO GENERAL PUBLIC LICENSE" in license_text
-            and "Version 3" in license_text
-        )
-
-    def _is_mozilla2_license(license_text: str) -> bool:
-        return "Mozilla Public License Version 2.0" in license_text
-
-    def _is_bsd_2_clause_license(license_text: str) -> bool:
-        return "BSD 2-Clause License" in license_text
-
-    def _is_bsd_3_clause_license(license_text: str) -> bool:
-        return "BSD 3-Clause License" in license_text
-
-    # SPDX identifiers to checks
-    checks = {
-        "MIT": _is_mit_license,
-        "Apache-2.0": _is_apache2_license,
-        "MPL-2.0": _is_mozilla2_license,
-        "GPL-3.0": _is_gplv3_license,
-        "LGPL-3.0": _is_lgplv3_license,
-        "AGPL-3.0": _is_agplv3_license,
-        "BSD-2-Clause": _is_bsd_2_clause_license,
-        "BSD-3-Clause": _is_bsd_3_clause_license,
+    patterns = {
+        "MIT": r"MIT License",
+        "Apache-2.0": r"Apache License.*Version 2",
+        "GPL-3.0": r"GNU GENERAL PUBLIC LICENSE.*Version 3",
+        "LGPL-3.0": r"GNU LESSER GENERAL PUBLIC LICENSE.*Version 3",
+        "AGPL-3.0": r"GNU AFFERO GENERAL PUBLIC LICENSE.*Version 3",
+        "MPL-2.0": r"Mozilla Public License Version 2.0",
+        "BSD-2-Clause": r"BSD 2-Clause License",
+        "BSD-3-Clause": r"BSD 3-Clause License",
     }
 
-    license_name = next((name for name, fn in checks.items() if fn(license_text)), None)
-    return license_name
+    for spdx_id, pattern in patterns.items():
+        if re.search(pattern, license_text, re.DOTALL):
+            return spdx_id
+
+    return None
 
 
 K = TypeVar("K")
