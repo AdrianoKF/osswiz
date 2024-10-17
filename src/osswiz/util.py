@@ -8,9 +8,15 @@ def classify_license(license_text: str) -> str | None:
 
     patterns = {
         "MIT": r"MIT License",
+        "MIT-0": r"MIT No Attribution",
         "Apache-2.0": r"Apache License.*Version 2",
-        "MPL-2.0": r"Mozilla Public License Version 2.0",
-        "EPL-2.0": r"Eclipse Public License - v 2.0",
+        "MPL-2.0": r"Mozilla Public License Version 2\.0",
+        "EPL-2.0": r"Eclipse Public License - v 2\.0",
+        "Unlicense": r"This is free and unencumbered software released into the public domain",
+        "WTFPL": r"DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE",
+        "BSL-1.0": r"Boost Software License - Version 1\.0",
+        "EUPL-1.2": r"EUROPEAN UNION PUBLIC LICENCE v\. 1\.2",
+        "Zlib": r"zlib License",
         # GPL licenses
         "GPL-3.0": r"GNU GENERAL PUBLIC LICENSE.*Version 3",
         "GPL-2.0": r"GNU GENERAL PUBLIC LICENSE.*Version 2",
@@ -22,6 +28,10 @@ def classify_license(license_text: str) -> str | None:
         "BSD-2-Clause": r"BSD 2-Clause License",
         "BSD-3-Clause": r"BSD 3-Clause License",
         "BSD-3-Clause-Clear": r"The Clear BSD License",
+        "ISC": r"ISC License",
+        # AI/ML licenses
+        "BigScience-OpenRAIL-M": r"BigScience Open RAIL-M License",
+        "CreativeML-OpenRAIL-M": r"CreativeML Open RAIL-M",
         # Creative Commons licenses
         "CC0-1.0": r"CC0 1.0 Universal",
         "CC-BY-4.0": r"Creative Commons Attribution 4.0",

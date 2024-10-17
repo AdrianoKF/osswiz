@@ -18,9 +18,18 @@ def _cc_url(license: str) -> str:
     "spdx_id, full_text_url",
     [
         ("MIT", _choosealicense_url("mit")),
+        ("MIT-0", _choosealicense_url("mit-0")),
         ("Apache-2.0", _choosealicense_url("apache-2.0")),
         ("MPL-2.0", _choosealicense_url("mpl-2.0")),
         ("EPL-2.0", _choosealicense_url("epl-2.0")),
+        ("Unlicense", "https://unlicense.org/UNLICENSE"),
+        ("WTFPL", "http://www.wtfpl.net/txt/copying/"),
+        ("BSL-1.0", _choosealicense_url("bsl-1.0")),
+        (
+            "EUPL-1.2",
+            "https://joinup.ec.europa.eu/sites/default/files/custom-page/attachment/2020-03/EUPL-1.2%20EN.txt",
+        ),
+        ("Zlib", _choosealicense_url("zlib")),
         # GPL licenses
         ("GPL-3.0", _choosealicense_url("gpl-3.0")),
         ("GPL-2.0", _choosealicense_url("gpl-2.0")),
