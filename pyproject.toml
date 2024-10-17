@@ -1,15 +1,25 @@
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling", "hatch-vcs"]
 build-backend = "hatchling.build"
 
 [project]
 name = "osswiz"
-version = "0.1.0"
 description = "The Wizard of OSS - a tool to help you manage your open source projects"
+dynamic = ["version"]
 license = { text = "Apache-2.0" }
 readme = "README.md"
 authors = [{ name = "Adrian Rumpold", email = "a.rumpold@gmail.com" }]
 requires-python = ">=3.10"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
 dependencies = ["repo-review[cli]>=0.11.2"]
 
 [tool.uv]
@@ -19,6 +29,12 @@ dev-dependencies = [
     "ruff>=0.6.9",
     "sp-repo-review[cli]>=2024.8.19",
 ]
+
+[tool.hatch.version]
+source = "vcs"
+
+[tool.hatch.build.hooks.vcs]
+version-file = "src/osswiz/_version.py"
 
 [project.scripts]
 osswiz = "repo_review.__main__:main"

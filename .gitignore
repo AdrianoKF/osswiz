@@ -8,3 +8,6 @@ wheels/
 
 # Virtual environments
 .venv
+
+# hatch-vcs version file
+src/osswiz/_version.py
