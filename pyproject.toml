@@ -12,6 +12,9 @@ authors = [{ name = "Adrian Rumpold", email = "a.rumpold@gmail.com" }]
 requires-python = ">=3.10"
 dependencies = ["repo-review>=0.11.2"]
 
+[project.optional-dependencies]
+cli = ["repo-review[cli]>=0.11.2"]
+
 [tool.uv]
 dev-dependencies = [
     "httpx>=0.27.2",
