@@ -9,9 +9,9 @@ You can run osswiz checks (through [repo-review](https://repo-review.readthedocs
 $ osswiz
 
 # If you don't have the package installed
-$ pipx run --spec git+https://github.com/AdrianoKF/osswiz@main osswiz
+$ pipx run osswiz
 # or, using uv:
-$ uvx --from git+https://github.com/AdrianoKF/osswiz osswiz
+$ uvx osswiz
 ```
 
 If want to run checks automatically whenever you make a commit, you can use the osswiz [`pre-commit`](https://pre-commit.com) hook:
