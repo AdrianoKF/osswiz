@@ -8,6 +8,7 @@ repos:
       - id: check-yaml
         args: [--allow-multiple-documents]
       - id: end-of-file-fixer
+        exclude: ^src/osswiz/_version\.py$
       - id: mixed-line-ending
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.6.9
