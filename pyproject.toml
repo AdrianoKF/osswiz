@@ -10,10 +10,7 @@ license = { text = "Apache-2.0" }
 readme = "README.md"
 authors = [{ name = "Adrian Rumpold", email = "a.rumpold@gmail.com" }]
 requires-python = ">=3.10"
-dependencies = ["repo-review>=0.11.2"]
-
-[project.optional-dependencies]
-cli = ["repo-review[cli]>=0.11.2"]
+dependencies = ["repo-review[cli]>=0.11.2"]
 
 [tool.uv]
 dev-dependencies = [
@@ -24,9 +21,6 @@ dev-dependencies = [
 ]
 
 [project.scripts]
-osswiz = "repo_review.__main__:main"
-
-[project.entry-points."pipx.run"]
 osswiz = "repo_review.__main__:main"
 
 [project.entry-points."repo_review.checks"]

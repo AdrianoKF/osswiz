@@ -9,7 +9,7 @@ You can run osswiz checks (through [repo-review](https://repo-review.readthedocs
 $ osswiz
 
 # If you don't have the package installed
-$ pipx run --spec git+https://github.com/AdrianoKF/osswiz osswiz
+$ pipx run --spec git+https://github.com/AdrianoKF/osswiz@main osswiz
 # or, using uv:
 $ uvx --from git+https://github.com/AdrianoKF/osswiz osswiz
 ```
