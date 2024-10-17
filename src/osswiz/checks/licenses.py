@@ -108,8 +108,11 @@ class LIC005(LicenseCheck):
     @staticmethod
     def check(license_files: list[Path]) -> "CheckResult":
         licenses = {lic: classify_license(lic.read_text()) for lic in license_files}
+        license_set = set(licenses.values())
 
-        if len(set(licenses.values())) > 1:
+        # GPL-3.0 and LGPL-3.0 can be applied together as per GNU/FSF guidelines:
+        # https://www.gnu.org/licenses/gpl-howto.html#license-files
+        if len(license_set) > 1 and license_set != {"LGPL-3.0", "GPL-3.0"}:
             filemap = inverse_mapping(licenses)
             return f"Multiple conflicting licenses found: {', '.join([f"{lic} ({', '.join(str(f) for f in files)})" for lic, files in filemap.items()])}"
 
