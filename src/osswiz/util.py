@@ -9,12 +9,31 @@ def classify_license(license_text: str) -> str | None:
     patterns = {
         "MIT": r"MIT License",
         "Apache-2.0": r"Apache License.*Version 2",
-        "GPL-3.0": r"GNU GENERAL PUBLIC LICENSE.*Version 3",
-        "LGPL-3.0": r"GNU LESSER GENERAL PUBLIC LICENSE.*Version 3",
-        "AGPL-3.0": r"GNU AFFERO GENERAL PUBLIC LICENSE.*Version 3",
         "MPL-2.0": r"Mozilla Public License Version 2.0",
+        "EPL-2.0": r"Eclipse Public License - v 2.0",
+        # GPL licenses
+        "GPL-3.0": r"GNU GENERAL PUBLIC LICENSE.*Version 3",
+        "GPL-2.0": r"GNU GENERAL PUBLIC LICENSE.*Version 2",
+        "LGPL-3.0": r"GNU LESSER GENERAL PUBLIC LICENSE.*Version 3",
+        "LGPL-2.1": r"GNU LESSER GENERAL PUBLIC LICENSE.*Version 2.1",
+        "AGPL-3.0": r"GNU AFFERO GENERAL PUBLIC LICENSE.*Version 3",
+        # BSD licenses
+        "0BSD": r"BSD Zero Clause License",
         "BSD-2-Clause": r"BSD 2-Clause License",
         "BSD-3-Clause": r"BSD 3-Clause License",
+        "BSD-3-Clause-Clear": r"The Clear BSD License",
+        # Creative Commons licenses
+        "CC0-1.0": r"CC0 1.0 Universal",
+        "CC-BY-4.0": r"Creative Commons Attribution 4.0",
+        "CC-BY-SA-4.0": r"Creative Commons Attribution-ShareAlike 4.0",
+        "CC-BY-NC-4.0": r"Creative Commons Attribution-NonCommercial 4.0",
+        "CC-BY-ND-4.0": r"Creative Commons Attribution-NoDerivatives 4.0",
+        "CC-BY-NC-SA-4.0": r"Creative Commons Attribution-NonCommercial-ShareAlike 4.0",
+        "CC-BY-NC-ND-4.0": r"Creative Commons Attribution-NonCommercial-NoDerivatives 4.0",
+        # Open Data Commons licenses
+        "ODbL-1.0": r"ODC Open Database License \(ODbL\)",
+        "ODC-By-1.0": r"ODC Attribution License \(ODC-By\)",
+        "PDDL-1.0": r"Public Domain Dedication and License \(PDDL\)",
     }
 
     for spdx_id, pattern in patterns.items():
