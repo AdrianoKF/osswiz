@@ -1,5 +1,7 @@
 # OSSWiz - the Wizard of OSS
 
+[![](https://img.shields.io/pypi/v/osswiz)](https://pypi.org/project/osswiz) ![GitHub](https://img.shields.io/github/license/AdrianoKF/osswiz)
+
 ## Usage
 
 You can run osswiz checks (through [repo-review](https://repo-review.readthedocs.io/en/latest/)) from the command line to interactively check your project:
