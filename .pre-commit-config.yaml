@@ -23,11 +23,17 @@ repos:
       - id: mypy
         name: mypy
         additional_dependencies:
-          - pytest
-          - httpx
           - repo-review
         types_or: [python, pyi]
-        args: [--config-file=pyproject.toml, --non-interactive, --install-types]
+        exclude: ^tests/
+        args:
+          [
+            --config-file,
+            pyproject.toml,
+            --warn-unused-configs,
+            --non-interactive,
+            --install-types,
+          ]
   - repo: https://github.com/astral-sh/uv-pre-commit
     rev: 0.4.22
     hooks:

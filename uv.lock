@@ -65,6 +65,19 @@ wheels = [
 ]
 
 [[package]]
+name = "hishel"
+version = "0.0.33"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "httpx" },
+    { name = "typing-extensions" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/ce/cf/d4414a62b77d1f3f58a0d812be20efe4a647fc1e103cec7c9ac559efe576/hishel-0.0.33.tar.gz", hash = "sha256:ab5b2661d5e2252f305fd0fb20e8c76bfab3ea73458f20f2591c53c37b270089", size = 35331 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/fa/3e/0ca767da4715abad09eda4ffcc3c8b69684cab271a055d856a424c9f5f1d/hishel-0.0.33-py3-none-any.whl", hash = "sha256:6e6c6cdaf432ff4c4981e7792ef7d1fa4c8ede58b9dbbcefb9ab3fc9770f2a07", size = 41654 },
+]
+
+[[package]]
 name = "httpcore"
 version = "1.0.6"
 source = { registry = "https://pypi.org/simple" }
@@ -134,7 +147,7 @@ wheels = [
 
 [[package]]
 name = "osswiz"
-version = "0.1.0"
+version = "0.1.0rc2.dev6+gf35854c.d20241017"
 source = { editable = "." }
 dependencies = [
     { name = "repo-review", extra = ["cli"] },
@@ -142,6 +155,7 @@ dependencies = [
 
 [package.dev-dependencies]
 dev = [
+    { name = "hishel" },
     { name = "httpx" },
     { name = "pytest" },
     { name = "ruff" },
@@ -153,6 +167,7 @@ requires-dist = [{ name = "repo-review", extras = ["cli"], specifier = ">=0.11.2
 
 [package.metadata.requires-dev]
 dev = [
+    { name = "hishel", specifier = ">=0.0.33" },
     { name = "httpx", specifier = ">=0.27.2" },
     { name = "pytest", specifier = ">=8.3.3" },
     { name = "ruff", specifier = ">=0.6.9" },

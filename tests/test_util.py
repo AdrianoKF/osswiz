@@ -1,3 +1,6 @@
+from collections.abc import Generator
+
+import hishel
 import httpx
 import pytest
 
@@ -12,6 +15,13 @@ def _cc_url(license: str) -> str:
     if license == "zero":
         return "https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt"
     return f"https://creativecommons.org/licenses/{license}/4.0/legalcode.txt"
+
+
+@pytest.fixture
+def client() -> Generator[httpx.Client, None, None]:
+    """httpx client with caching (through hishel)"""
+    with hishel.CacheClient() as client:
+        yield client
 
 
 @pytest.mark.parametrize(
@@ -41,6 +51,7 @@ def _cc_url(license: str) -> str:
         ("BSD-2-Clause", _choosealicense_url("bsd-2-clause")),
         ("BSD-3-Clause", _choosealicense_url("bsd-3-clause")),
         ("BSD-3-Clause-Clear", _choosealicense_url("bsd-3-clause-clear")),
+        ("ISC", _choosealicense_url("isc")),
         # Creative Commons licenses
         ("CC0-1.0", _cc_url("zero")),
         ("CC-BY-4.0", _cc_url("by")),
@@ -58,8 +69,10 @@ def _cc_url(license: str) -> str:
         ("PDDL-1.0", "https://opendatacommons.org/licenses/pddl/pddl-10.txt"),
     ],
 )
-def test_classify_license(spdx_id: str, full_text_url: str) -> None:
-    license_text = httpx.get(full_text_url).text
+def test_classify_license(
+    client: httpx.Client, spdx_id: str, full_text_url: str
+) -> None:
+    license_text = client.get(full_text_url).text
 
     if "choosealicense" in full_text_url:
         # Split at --- since the license text follows the frontmatter in choosealicense repo
