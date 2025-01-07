@@ -37,7 +37,7 @@ def client() -> Generator[httpx.Client, None, None]:
         ("BSL-1.0", _choosealicense_url("bsl-1.0")),
         (
             "EUPL-1.2",
-            "https://joinup.ec.europa.eu/sites/default/files/custom-page/attachment/2020-03/EUPL-1.2%20EN.txt",
+            "https://interoperable-europe.ec.europa.eu/sites/default/files/custom-page/attachment/2020-03/EUPL-1.2%20EN.txt",
         ),
         ("Zlib", _choosealicense_url("zlib")),
         # GPL licenses
