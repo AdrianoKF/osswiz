@@ -114,6 +114,6 @@ class LIC005(LicenseCheck):
         # https://www.gnu.org/licenses/gpl-howto.html#license-files
         if len(license_set) > 1 and license_set != {"LGPL-3.0", "GPL-3.0"}:
             filemap = inverse_mapping(licenses)
-            return f"Multiple conflicting licenses found: {', '.join([f"{lic} ({', '.join(str(f) for f in files)})" for lic, files in filemap.items()])}"
+            return f"Multiple conflicting licenses found: {', '.join([f'{lic} ({", ".join(str(f) for f in files)})' for lic, files in filemap.items()])}"
 
         return True
