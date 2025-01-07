@@ -147,7 +147,7 @@ wheels = [
 
 [[package]]
 name = "osswiz"
-version = "0.1.0rc2.dev8+g87a79ab"
+version = "0.1.0rc2.dev8+g87a79ab.d20250107"
 source = { editable = "." }
 dependencies = [
     { name = "repo-review", extra = ["cli"] },
